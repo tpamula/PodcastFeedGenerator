@@ -18,5 +18,14 @@ namespace PodcastFeedGenerator.Tests
 
             Assert.True(!string.IsNullOrWhiteSpace(result));
         }
+
+        [Fact]
+        private void grabs_links_from_website()
+        {
+            var linkGrabber = new LinkGrabber();
+            var result = linkGrabber.Grab();
+
+            Assert.NotEmpty(result);
+        }
     }
 }

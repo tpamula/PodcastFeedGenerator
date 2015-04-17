@@ -11,8 +11,11 @@ namespace PodcastFeedGenerator.Models
 
         public Dictionary<string, string> Grab()
         {
-            var ieHtml = Task.Run(() => FetchWebsite()).Result;
-            throw new NotImplementedException();
+            var targetHtml = Task.Run(() => FetchWebsite()).Result;
+            var linkParser = new LinkParser();
+            var result = linkParser.Parse(targetHtml);
+
+            return result;
         }
 
         public async Task<string> FetchWebsite()
