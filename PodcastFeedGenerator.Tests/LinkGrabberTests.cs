@@ -1,28 +1,22 @@
-﻿using ApprovalTests;
-using ApprovalTests.Namers;
-using ApprovalTests.Reporters;
-using PodcastFeedGenerator.Models;
-using System.Collections.Generic;
-using System.IO;
+﻿using PodcastFeedGenerator.Models;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace PodcastFeedGenerator.Tests
 {
-    [UseReporter(typeof(DiffReporter))]
-    [UseApprovalSubdirectory("Approvals")]
     public class LinkGrabberTests
     {
-        private readonly string _testFilePath = @"..\..\Data\IE-2015-04-17.html";
-
+        /// <summary>
+        /// the motivation for this test is that the LinkGrabber
+        /// throws an exception when httpStatuCode is different than OK
+        /// </summary>
         [Fact]
-        private void should_grab_links()
+        private async Task fetches_website()
         {
-            var input = File.ReadAllText(_testFilePath);
-
             var linkGrabber = new LinkGrabber();
-            var result = linkGrabber.Grab(input);
+            var result = await linkGrabber.FetchWebsite();
 
-            Approvals.VerifyAll(result, "[name, link]");
+            Assert.True(!string.IsNullOrWhiteSpace(result));
         }
     }
 }

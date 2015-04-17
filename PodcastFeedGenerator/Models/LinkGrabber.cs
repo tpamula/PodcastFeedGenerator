@@ -1,34 +1,35 @@
-using HtmlAgilityPack;
-using Newtonsoft.Json.Linq;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace PodcastFeedGenerator.Models
 {
     public class LinkGrabber
     {
-        public Dictionary<string, string> Grab(string inputHtml)
-        {
-            var htmlDocument = new HtmlDocument();
-            htmlDocument.LoadHtml(inputHtml);
+        private readonly string _informatorEkonomicznyUrl = "http://www.polskieradio.pl/9/Audycja/7418";
 
-            return Grab(htmlDocument);
+        public Dictionary<string, string> Grab()
+        {
+            var ieHtml = Task.Run(() => FetchWebsite()).Result;
+            throw new NotImplementedException();
         }
 
-        private Dictionary<string, string> Grab(HtmlDocument input)
+        public async Task<string> FetchWebsite()
         {
-            var result = new Dictionary<string, string>();
-            string ieXpath = ".//*[@id=\'colFirst-wide\']/div[3]/div[2]/ul/li[*]/span[2]/a";
-
-            foreach (var node in input.DocumentNode.SelectNodes(ieXpath))
+            string ieHtml;
+            using (var httpClient = new HttpClient())
             {
-                var link = JObject.Parse(node.Attributes["data-media"].Value)["file"].ToString();
-                var description = node.InnerHtml;
+                var response = await httpClient.GetAsync(_informatorEkonomicznyUrl);
 
-                result[description] = link;
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new InvalidOperationException("Invalid status code.");
+                }
+
+                ieHtml = await response.Content.ReadAsStringAsync();
             }
-
-            return result;
+            return ieHtml;
         }
     }
 }
