@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PodcastFeedGenerator", "PodcastFeedGenerator\PodcastFeedGenerator.csproj", "{B81DFB94-7C1D-4C6B-AF21-B3CF98100041}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PodcastFeedGenerator.Tests", "PodcastFeedGenerator.Tests\PodcastFeedGenerator.Tests.csproj", "{463609B4-DF6E-40AC-96DD-5F9A1F8324E7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B81DFB94-7C1D-4C6B-AF21-B3CF98100041}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B81DFB94-7C1D-4C6B-AF21-B3CF98100041}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B81DFB94-7C1D-4C6B-AF21-B3CF98100041}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B81DFB94-7C1D-4C6B-AF21-B3CF98100041}.Release|Any CPU.Build.0 = Release|Any CPU
+		{463609B4-DF6E-40AC-96DD-5F9A1F8324E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{463609B4-DF6E-40AC-96DD-5F9A1F8324E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{463609B4-DF6E-40AC-96DD-5F9A1F8324E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{463609B4-DF6E-40AC-96DD-5F9A1F8324E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
