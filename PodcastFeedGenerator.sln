@@ -7,20 +7,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PodcastFeedGenerator", "Pod
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PodcastFeedGenerator.Tests", "PodcastFeedGenerator.Tests\PodcastFeedGenerator.Tests.csproj", "{463609B4-DF6E-40AC-96DD-5F9A1F8324E7}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{F0A5EB87-9215-4956-8920-F525E1B1C706}"
-	ProjectSection(SolutionItems) = preProject
-		PublishScripts\AzureWebsitePublishModule.psm1 = PublishScripts\AzureWebsitePublishModule.psm1
-		PublishScripts\Publish-WebApplicationWebsite.ps1 = PublishScripts\Publish-WebApplicationWebsite.ps1
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configurations", "{29C6554A-87B4-4727-9920-7E4CAF15543A}"
-	ProjectSection(SolutionItems) = preProject
-		PublishScripts\Configurations\PodcastFeedGenerator-WAWS-dev.json = PublishScripts\Configurations\PodcastFeedGenerator-WAWS-dev.json
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{9EBF0C0C-AB61-4411-9DB2-6E23999AEEE1}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{803B7B00-B5AC-4EF4-895C-00CAAE661B7E}"
+	ProjectSection(SolutionItems) = preProject
+		license = license
+		readme.md = readme.md
 	EndProjectSection
 EndProject
 Global
@@ -40,8 +35,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{29C6554A-87B4-4727-9920-7E4CAF15543A} = {F0A5EB87-9215-4956-8920-F525E1B1C706}
 	EndGlobalSection
 EndGlobal

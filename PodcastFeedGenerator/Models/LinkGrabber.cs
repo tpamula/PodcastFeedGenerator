@@ -11,16 +11,16 @@ namespace PodcastFeedGenerator.Models
 
         public Dictionary<string, string> Grab()
         {
-            var targetHtml = Task.Run(() => FetchWebsite()).Result;
+            var websiteHtml = Task.Run(() => FetchWebsite()).Result;
             var linkParser = new LinkParser();
-            var result = linkParser.Parse(targetHtml);
+            var result = linkParser.Parse(websiteHtml);
 
             return result;
         }
 
         public async Task<string> FetchWebsite()
         {
-            string ieHtml;
+            string websiteHtml;
             using (var httpClient = new HttpClient())
             {
                 var response = await httpClient.GetAsync(_informatorEkonomicznyUrl);
@@ -30,9 +30,9 @@ namespace PodcastFeedGenerator.Models
                     throw new InvalidOperationException("Invalid status code.");
                 }
 
-                ieHtml = await response.Content.ReadAsStringAsync();
+                websiteHtml = await response.Content.ReadAsStringAsync();
             }
-            return ieHtml;
+            return websiteHtml;
         }
     }
 }

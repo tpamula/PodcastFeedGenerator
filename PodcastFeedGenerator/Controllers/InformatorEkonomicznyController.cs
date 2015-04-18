@@ -15,12 +15,12 @@ namespace PodcastFeedGenerator.Controllers
             var settings = new XmlWriterSettings();
             settings.Encoding = Encoding.UTF8;
             var xmlWriter = XmlWriter.Create(Response.Output, settings);
-            var ieRssGenerator = new IeRssGenerator();
+            var ieRssGenerator = new InformatorEkonomicznyRssStreamWriter();
             var linkGrabber = new LinkGrabber();
 
             var linksDictionary = linkGrabber.Grab();
-            var episodes = linksDictionary.ToEpisodes<string, string>().Take(1).ToList();
-            ieRssGenerator.Generate(episodes, xmlWriter);
+            var episodes = linksDictionary.ToEpisodes().ToList();
+            ieRssGenerator.Write(episodes, xmlWriter);
 
             Response.End();
             return new EmptyResult();

@@ -18,9 +18,9 @@ namespace PodcastFeedGenerator.Models
         private Dictionary<string, string> Parse(HtmlDocument input)
         {
             var result = new Dictionary<string, string>();
-            string ieXpath = ".//*[@id=\'colFirst-wide\']/div[3]/div[2]/ul/li[*]/span[2]/a";
+            string linksXpath = ".//*[@id=\'colFirst-wide\']/div[3]/div[2]/ul/li[*]/span[2]/a";
 
-            foreach (var node in input.DocumentNode.SelectNodes(ieXpath))
+            foreach (var node in input.DocumentNode.SelectNodes(linksXpath))
             {
                 var link = JObject.Parse(node.Attributes["data-media"].Value)["file"].ToString();
                 var description = node.InnerHtml;
