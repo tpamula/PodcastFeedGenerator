@@ -19,7 +19,8 @@ namespace PodcastFeedGenerator.Models
                     "dd.MM.yyyy HH:mm",
                     CultureInfo.InvariantCulture);
 
-                var episodeGmtPublicationDate = episodeLocalPublicationDate.IsDaylightSavingTime()
+                TimeZoneInfo cetTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Central Europe Standard Time");
+                var episodeGmtPublicationDate = cetTimeZone.IsDaylightSavingTime(episodeLocalPublicationDate)
                     ? episodeLocalPublicationDate.AddHours(-2)
                     : episodeLocalPublicationDate.AddHours(-1);
 
