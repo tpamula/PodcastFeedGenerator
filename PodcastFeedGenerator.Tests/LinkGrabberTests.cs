@@ -25,7 +25,8 @@ namespace PodcastFeedGenerator.Tests
             var linkGrabber = new LinkGrabber();
             var result = linkGrabber.Grab();
 
-            Assert.NotEmpty(result);
+            // there should be more than one result
+            Assert.True(result.Count > 1);
         }
     }
 }

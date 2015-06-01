@@ -2,6 +2,7 @@ using HtmlAgilityPack;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace PodcastFeedGenerator.Models
 {
@@ -18,12 +19,17 @@ namespace PodcastFeedGenerator.Models
         private Dictionary<string, string> Parse(HtmlDocument input)
         {
             var result = new Dictionary<string, string>();
-            string linksXpath = ".//*[@id=\'colFirst-wide\']/div[3]/div[2]/ul/li[*]/span[2]/a";
+            string linksXpath = "//div[span[@data-media] and @class='positioner']";
 
             foreach (var node in input.DocumentNode.SelectNodes(linksXpath))
             {
-                var link = JObject.Parse(node.Attributes["data-media"].Value)["file"].ToString();
-                var description = node.InnerHtml;
+                var linkNode = node.SelectSingleNode(".//span[@data-media]");
+                var link = JObject.Parse(linkNode.Attributes["data-media"].Value)["file"].ToString();
+
+                var descriptionNode = node.SelectSingleNode(".//span[@class='title']");
+                var description = descriptionNode.InnerHtml;
+                Regex.Replace(description, @"\r\n?|\n", "");
+                description = description.Trim();
 
                 result[description] = link;
             }
